@@ -1,0 +1,9 @@
+.dockerignore
+.git
+.gitignore
+docker-compose
+Dockerfile
+Dockerfile.rails
+README.md
+node_modules
+vendor/bundle
