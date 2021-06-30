@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>Twitter Clone</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,17 +9,76 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-    <h1>Blog</h1>
-    <nav>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <body>
-    <%= yield %>
+  <body id="app">
+    <div>
+      <header id="app-header">
+        <h1>Twitter</h1>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/">Profile</a>
+            </li>
+            <li>
+              <a href="/">Find People</a>
+            </li>
+            <li>
+              <a href="/">Settings</a>
+            </li>
+            <li>
+              <a href="/">Help</a>
+            </li>
+            <li>
+              <a href="/">Sign out</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main id="app-main">
+        <%= yield %>
+      </main>
+      <footer id="app-footer">
+        <ul>
+          <li>
+            &copy; 2010 Twitter
+          </li>
+          <li>
+            <a href="/">About Us</a>
+          </li>
+          <li>
+            <a href="/">Contact</a>
+          </li>
+          <li>
+            <a href="/">Blog</a>
+          </li>
+          <li>
+            <a href="/">Status</a>
+          </li>
+          <li>
+            <a href="/">Goodies</a>
+          </li>
+          <li>
+            <a href="/">API</a>
+          </li>
+          <li>
+            <a href="/">Business</a>
+          </li>
+          <li>
+            <a href="/">Help</a>
+          </li>
+          <li>
+            <a href="/">Jobs</a>
+          </li>
+          <li>
+            <a href="/">Terms</a>
+          </li>
+          <li>
+            <a href="/">Privacy</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
   </body>
 </html>
