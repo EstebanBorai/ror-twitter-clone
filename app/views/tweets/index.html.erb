@@ -1,31 +1,27 @@
 <div id="tweet-input">
-  <header>
-    <span>What's happening?</span>
-    <strong>140</strong>
-  </header>
-  <textarea></textarea>
-  <div>
-    <small>
-      <%= @latest_tweet.body %>
-    </small>
-    <button>Tweet</button>
-  </div>
+  <%= render 'tweet_form' %>
 </div>
 <h2>Home</h2>
-<ul id="timeline">
-  <% @tweets.each do |tweet| %>
-    <li class="tweet">
-      <figure>
-        <img src="https://via.placeholder.com/60" />
-      </figure>
-      <article>
-        <p>
-          <%= tweet.body %>
-        </p>
-        <small>
-          <%= tweet.created_at.strftime('%B %e at %l:%M %p') %>
-        </small>
-      </article>
-    </li>
-  <% end %>
-</ul>
+<% if @are_tweets_available %>
+  <ul id="timeline">
+    <% @tweets.each do |tweet| %>
+      <li class="tweet">
+        <figure>
+          <img src="https://via.placeholder.com/60" />
+        </figure>
+        <article>
+          <p>
+            <%= tweet.body %>
+          </p>
+          <small>
+            <%= tweet.created_at.strftime('%B %e at %l:%M %p') %>
+          </small>
+        </article>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div>
+    <span>Theres no Tweets available, create a new tweet!</span>
+  </div>
+<% end %>

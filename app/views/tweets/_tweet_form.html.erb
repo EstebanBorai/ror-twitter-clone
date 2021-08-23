@@ -1,0 +1,52 @@
+<header>
+  <span>What's happening?</span>
+  <strong id="tweet-character-counter">140</strong>
+</header>
+<textarea id="tweet-textarea"></textarea>
+<div>
+  <small>
+    <%= @latest_tweet_body %>
+  </small>
+  <button id="tweet-form-send-tweet">Tweet</button>
+</div>
+<%= form_with(model: @tweet, id: "new-tweet-form", local: false) do |f| %>
+  <f.text_field id="tweet-form-underlying-tweet-form"></f.text_field>
+<% end %>
+<script>
+  window.addEventListener('load', () => {
+    const TWEET_MAX_LENGTH = 140;
+    const underlyingTweetForm = document.querySelector('#tweet-form-underlying-tweet-form');
+    const sendTweetBtnEl = document.querySelector('#tweet-form-send-tweet');
+    const characterCounterEl = document.querySelector('#tweet-character-counter');
+    const textAreaEl = document.querySelector('#tweet-textarea');
+
+    let tweetText = '';
+  
+    textAreaEl.addEventListener('input', (event) => {
+      const value = event.target.value;
+  
+      // Set remaining characters
+      characterCounterEl.innerText = TWEET_MAX_LENGTH - value.length;
+  
+      // Check for the input length to be valid
+      if (TWEET_MAX_LENGTH - value.length < 0) {
+        characterCounterEl.style.color = 'red';
+        sendTweetBtnEl.disabled = true;
+        underlyingTweetForm.value = value;
+        tweetText = value;
+      } else {
+        characterCounterEl.style.color = null;
+        sendTweetBtnEl.disabled = false;
+      }
+    });
+
+    sendTweetBtnEl.addEventListener('click', () => {
+      fetch('/', {
+        method: 'post',
+        body: JSON.stringify({
+          body: tweetText,
+        }),
+      });
+    });
+  });
+</script>

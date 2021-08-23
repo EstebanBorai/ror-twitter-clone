@@ -45,3 +45,24 @@ bin/rails server
 ```bash
 docker-compose up --build
 ```
+
+With `make` available in your system, you are able to go ahead and use the
+following Make recipes:
+
+#### Makefile: Build and execute Docker containers
+
+```bash
+make up
+```
+
+#### Makefile: Stop containers
+
+```bash
+make down
+```
+
+#### Clean up
+
+```bash
+make prune
+```
